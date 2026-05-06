@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta charset="utf-8" />
+<html>
+<head>
+<style>
+.calcDisplay 
+	{
+	border: 2px solid black;
+	height: 50px;
+	width: 500px;
+	font-size: 300%;
+	}
+.calcButtons 
+	{
+	height: 125px;
+	width: 125px;
+	font-size: 300%;
+	}
+</style>
+<title></title>
+</head>
+<body>
+<script>
+var numA
+var numB
+var numBHolder=""
+var numC
+var pressedNum
+var currentDisplay=""
+var operatorCheck= false
+var operatorType
+var operatorTypeType
+function addDisplay(pressedNum)
+{
+	if (operatorCheck == false)
+	{
+		currentDisplay=currentDisplay+pressedNum
+		document.getElementById("calcBox").value=currentDisplay
+	}
+	else
+	{
+		currentDisplay=currentDisplay+pressedNum
+		document.getElementById("calcBox").value=currentDisplay
+		numBHolder=numBHolder+pressedNum
+	}
+}
+function operations(operatorType)
+	{
+	operatorTypeType=operatorType
+	if (operatorCheck == false)
+	{
+		numA=parseInt(currentDisplay)
+		operatorCheck = true
+		if (operatorType==1)
+		{
+			currentDisplay=currentDisplay + " + "
+			document.getElementById("calcBox").value=currentDisplay
+		}
+		if (operatorType==2)
+		{
+			currentDisplay=currentDisplay + " - "
+			document.getElementById("calcBox").value=currentDisplay
+		}
+		if (operatorType==3)
+		{
+			currentDisplay=currentDisplay + " * "
+			document.getElementById("calcBox").value=currentDisplay
+		}
+		if (operatorType==4)
+		{
+			currentDisplay=currentDisplay + " ÷ "
+			document.getElementById("calcBox").value=currentDisplay
+		}
+	}
+	}
+function solveMath()
+{
+	numB=parseInt(numBHolder)
+	if (operatorTypeType==1)
+	{
+		numC=(numA*1)+(numB*1)
+	}
+	if (operatorTypeType==2)
+	{
+		numC=(numA*1)-(numB*1)
+	}
+	if (operatorTypeType==3)
+	{
+		numC=(numA*1)*(numB*1)
+	}
+	if (operatorTypeType==4)
+	{
+		numC=(numA*1)/(numB*1)
+	}
+	
+	alert(numC+" "+numA+" "+numB)
+	document.getElementById("calcResult").innerHTML=numC
+}   
+
+
+</script>
+<h1>
+Calculator
+</h1>
+<h2 class="calcHeader"><input id="calcBox" class="calcDisplay" disabled></input> =</h2>
+<div id="calcResult" class="calcDisplay" disabled></div>
+<br/>
+<button class="calcButtons" onclick="operations(4)">÷</button>
+<button class="calcButtons" onclick="addDisplay(7)">7</button>
+<button class="calcButtons" onclick="addDisplay(8)">8</button>
+<button class="calcButtons" onclick="addDisplay(9)">9</button>
+<br/>
+<button class="calcButtons" onclick="operations(3)">*</button>
+<button class="calcButtons" onclick="addDisplay(4)">4</button>
+<button class="calcButtons" onclick="addDisplay(5)">5</button>
+<button class="calcButtons" onclick="addDisplay(6)">6</button>
+<br/>
+<button class="calcButtons" onclick="operations(2)">-</button>
+<button class="calcButtons" onclick="addDisplay(1)">1</button>
+<button class="calcButtons" onclick="addDisplay(2)">2</button>
+<button class="calcButtons" onclick="addDisplay(3)">3</button>
+<br/>
+<button class="calcButtons" onclick="operations(1)">+</button>
+<button class="calcButtons" onclick="addDisplay(0)">0</button>
+<button class="calcButtons" onclick="solveMath()">=</button>
+<br/>
+<script>
+
+</script>
+</body>
+</html>
